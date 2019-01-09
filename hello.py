@@ -36,40 +36,40 @@ def joy():
     return joy[random.randrange(10)]
 
 def anger():
-    joy = ['😡','🤬','😠','🤯','👺','😤']
+    anger = ['😡','🤬','😠','🤯','👺','😤']
     return anger[random.randrange(6)]
 
 def fear():
-    joy = ['😱','😰','😨','😬','😳','😥']
+    fear = ['😱','😰','😨','😬','😳','😥']
     return fear[random.randrange(6)]
 
 def sadness():
-    joy = ['☹️','😖','😞','😢','😭','😕','🙃','😔']
+    sadness = ['☹️','😖','😞','😢','😭','😕','🙃','😔']
     return sadness[random.randrange(8)]
 
 def analytical():
-    joy = ['🤔','🤨','🧐']
+    analytical = ['🤔','🤨','🧐']
     return analytical[random.randrange(3)]
 
 def confident():
-    joy = ['😛','😜','😏']
+    confident = ['😛','😜','😏']
     return confident[random.randrange(3)]
 
 def tentative():
-    joy = ['😒','😑','😓','😶']
-    return joy[random.randrange(4)]
+    tentative = ['😒','😑','😓','😶']
+    return tentative[random.randrange(4)]
 
 def getEmoji(tone):
     switcher = {
         'joy': joy(),
-        'anger': "February",
-        'fear': "March",
-        'sadness': "May",
-        'analytical': "June",
-        'confident': "July",
-        'tentative': "August"
+        'anger': anger(),
+        'fear': fear(),
+        'sadness': sadness(),
+        'analytical': analytical(),
+        'confident': confident(),
+        'tentative': tentative()
     }
-    print(switcher.get(tone, "Invalid month"))
+    print(switcher.get(tone))
 
 def analyzeScope():
     data = getScope(params)
