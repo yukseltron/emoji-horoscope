@@ -32,6 +32,7 @@ def getTone(data):
 
     return tone_analysis
 
+#gets emoji for compatible sign
 def getSign(sign):
     switcher = {
         'Aries': '♈️',
@@ -55,7 +56,7 @@ def joy():
     return joy[random.randrange(10)]
 
 def anger():
-    anger = ['😡','🤬','😠','🤯','👺','😤']
+    anger = ['😡','🤬','😠','🤯','😈','😤']
     return anger[random.randrange(6)]
 
 def fear():
@@ -75,7 +76,7 @@ def confident():
     return confident[random.randrange(3)]
 
 def tentative():
-    tentative = ['😒','😑','😓','😶']
+    tentative = ['😒','😑','😓','🤭']
     return tentative[random.randrange(4)]
 
 def getEmoji(tone):
@@ -90,6 +91,13 @@ def getEmoji(tone):
     }
     return switcher.get(tone)
 
+def getFaceEmoji():
+    emojis = ['😘','😪','😮','🤓','🤤']
+    return emojis[random.randrange(5)]
+
+def getRandomEmoji():
+    emojis = ['👀','👏','🌞','💩','👅','💦','🌊','🔥','🌟','🐿','🍑','🍆','🎱','🎉']
+    return emojis[random.randrange(14)]
 
 def analyzeScope():
     data = getScope(params) #get the horoscope
@@ -103,8 +111,8 @@ def analyzeScope():
         languageTone = tone['document_tone']['tones'][1]['tone_id'] #get the language tone
         finalTone += getEmoji(languageTone)
     except:
-        pass
+        finalTone += getFaceEmoji()
 
-    return finalTone + compatibility
+    return finalTone + compatibility + getRandomEmoji()
 
 print(analyzeScope())
