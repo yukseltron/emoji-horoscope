@@ -1,10 +1,11 @@
 import json
 import requests
+import random
 from watson_developer_cloud import ToneAnalyzerV3
 
 
 params = (
-('sign', 'taurus'),
+('sign', 'aries'),
 ('day', 'today'),
 )
 
@@ -30,13 +31,51 @@ def getTone(data):
 
     return tone_analysis
 
+def joy():
+    joy = ['😁','😀','😂','😆','🤑','🤣','😊','😋','😍','😇']
+    return joy[random.randrange(10)]
+
+def anger():
+    joy = ['😡','🤬','😠','🤯','👺','😤']
+    return anger[random.randrange(6)]
+
+def fear():
+    joy = ['😱','😰','😨','😬','😳','😥']
+    return fear[random.randrange(6)]
+
+def sadness():
+    joy = ['☹️','😖','😞','😢','😭','😕','🙃','😔']
+    return sadness[random.randrange(8)]
+
+def analytical():
+    joy = ['🤔','🤨','🧐']
+    return analytical[random.randrange(3)]
+
+def confident():
+    joy = ['😛','😜','😏']
+    return confident[random.randrange(3)]
+
+def tentative():
+    joy = ['😒','😑','😓','😶']
+    return joy[random.randrange(4)]
+
+def getEmoji(tone):
+    switcher = {
+        'joy': joy(),
+        'anger': "February",
+        'fear': "March",
+        'sadness': "May",
+        'analytical': "June",
+        'confident': "July",
+        'tentative': "August"
+    }
+    print(switcher.get(tone, "Invalid month"))
 
 def analyzeScope():
     data = getScope(params)
     tone = getTone(data['description'])
     emotionalTone = tone['document_tone']['tones'][0]['tone_id']
-    languageTone = tone['document_tone']['tones'][1]['tone_id']
-
-    print(languageTone)
+    languageTone = tone['document_tone']['tones'][1]['tone_id'] #test for only 1 tone
+    getEmoji(emotionalTone)
 
 analyzeScope()
