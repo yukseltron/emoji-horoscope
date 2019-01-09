@@ -5,18 +5,19 @@ from watson_developer_cloud import ToneAnalyzerV3
 
 
 params = (
-('sign', 'aries'),
+('sign', 'libra'),
 ('day', 'today'),
 )
 
 
+#Gets horoscope info
 def getScope(params):
     r = requests.post('https://aztro.sameerkumar.website/', params=params)
     data = r.json()
-
     return data
 
 
+#Performs tone anlysis
 def getTone(data):
     tone_analyzer = ToneAnalyzerV3(
         version='2017-09-21',
@@ -31,6 +32,24 @@ def getTone(data):
 
     return tone_analysis
 
+def getSign(sign):
+    switcher = {
+        'Aries': '♈️',
+        'Taurus': '♉️',
+        'Gemini': '♊️',
+        'Cancer': '♋️ ',
+        'Leo': '♌️',
+        'Virgo': '♍️',
+        'Libra': '♎️',
+        'Scorpio': '♏️',
+        'Sagittarius': '♐️',
+        'Capricorn': '♑️',
+        'Aquarius': '♒️',
+        'Pisces': '♓️'
+    }
+    return switcher.get(sign)
+
+#switch case to select appropriate emoji
 def joy():
     joy = ['😁','😀','😂','😆','🤑','🤣','😊','😋','😍','😇']
     return joy[random.randrange(10)]
@@ -69,13 +88,23 @@ def getEmoji(tone):
         'confident': confident(),
         'tentative': tentative()
     }
-    print(switcher.get(tone))
+    return switcher.get(tone)
+
 
 def analyzeScope():
-    data = getScope(params)
-    tone = getTone(data['description'])
-    emotionalTone = tone['document_tone']['tones'][0]['tone_id']
-    languageTone = tone['document_tone']['tones'][1]['tone_id'] #test for only 1 tone
-    getEmoji(emotionalTone)
+    data = getScope(params) #get the horoscope
+    tone = getTone(data['description']) #get the tone of the horoscope
+    compatibility = getSign(data['compatibility'])
+    emotionalTone = tone['document_tone']['tones'][0]['tone_id'] #get the emotional tone
+    finalTone = getEmoji(emotionalTone)
 
-analyzeScope()
+    # Sometimes lanugage tone is unable to be measured
+    try:
+        languageTone = tone['document_tone']['tones'][1]['tone_id'] #get the language tone
+        finalTone += getEmoji(languageTone)
+    except:
+        pass
+
+    return finalTone + compatibility
+
+print(analyzeScope())
