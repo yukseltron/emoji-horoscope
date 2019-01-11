@@ -1,0 +1,9 @@
+@import '_include-media';
+
+body {
+  background-color: #DC9596;
+}
+
+@include media('<900px') {
+
+}
