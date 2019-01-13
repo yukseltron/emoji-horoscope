@@ -42,10 +42,4 @@ body .container .content form .submit-btn {
   margin-bottom: 50px;
 }
 
-@media (max-width: 899px) {
-  body {
-    font-size: 200%;
-  }
-}
-
 /*# sourceMappingURL=style.css.map */
