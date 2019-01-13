@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css?family=Coda+Caption:800");
+@import url("https://fonts.googleapis.com/css?family=Cutive+Mono");
+body {
+  font-family: "Cutive Mono", monospace;
+}
+body .container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+body .container .intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+body .container .intro h1 {
+  font-family: "Coda Caption", sans-serif;
+  font-size: 300%;
+}
+body .container .intro .ball {
+  font-size: 500%;
+}
+body .container .content {
+  display: flex;
+  justify-content: space-around;
+}
+body .container .content form div {
+  text-align: left;
+}
+body .container .horoscope {
+  font-size: 1000%;
+}
+
+/*# sourceMappingURL=style.css.map */

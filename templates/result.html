@@ -1,9 +1,12 @@
 <!doctype html>
 <html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
    <body>
-     {% extends "index.html" %}
-     {% block content %}
-     {{ horoscope }}
-     {% endblock %}
+       {% extends "index.html" %}
+       {% block content %}
+       {{ horoscope }}
+       {% endblock %}
    </body>
 </html>
