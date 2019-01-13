@@ -40,7 +40,7 @@ def getSign(sign):
         'Aries': '♈️',
         'Taurus': '♉️',
         'Gemini': '♊️',
-        'Cancer': '♋️ ',
+        'Cancer': '♋️',
         'Leo': '♌️',
         'Virgo': '♍️',
         'Libra': '♎️',

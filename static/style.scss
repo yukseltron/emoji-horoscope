@@ -8,7 +8,8 @@ body {
   .container {
     display: flex;
     flex-direction: column;
-      text-align: center;
+    text-align: center;
+
     .intro {
       display: flex;
       flex-direction: column;
@@ -19,7 +20,7 @@ body {
         font-size: 300%;
       }
 
-      .ball {
+      .horoscope {
         font-size: 500%;
       }
     }
@@ -29,18 +30,33 @@ body {
       justify-content: space-around;
 
       form {
-        div {
-          text-align: left;
+        .signs {
+          margin-top: 50px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          div {
+            margin-left: 5px;
+            text-align: left;
+
+            div {
+              margin-bottom: 5px;
+            }
+          }
+        }
+
+        .submit-btn {
+          margin-top: 50px;
+          margin-bottom: 50px;
         }
       }
-    }
-
-    .horoscope {
-      font-size: 1000%;
     }
   }
 }
 
 @include media('<900px') {
-
+  body {
+    font-size: 200%;
+  }
 }
