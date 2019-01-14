@@ -1,0 +1,11 @@
+Flask==1.0.2
+click>=6.7
+gunicorn>=19.7.1
+itsdangerous>=0.24
+requests>=2.21.0
+jinja2>=2.9.6
+watson-developer-cloud>=2.5.1
+markupSafe>=1.0
+pytz>=2017.2
+Werkzeug>=0.12.1
+requests_toolbelt>=0.6.0

@@ -1,4 +1,4 @@
-#!/Users/hamid.yuksel/Projects/emoji-horoscope/venv/bin/python
+#!/Users/hamid.yuksel/Projects/pyApp/venv/bin/python
 
 import sys
 import getopt

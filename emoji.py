@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
 import json
 import requests
 import random
 from watson_developer_cloud import ToneAnalyzerV3
+from requests_toolbelt.adapters import appengine
+appengine.monkeypatch()
 
 #make astrology param to send to api
 def setParams(sign):
@@ -105,14 +108,55 @@ def analyzeScope(sign):
     data = getScope(setParams(sign)) #get the horoscope
     tone = getTone(data['description']) #get the tone of the horoscope
     compatibility = getSign(data['compatibility'])
-    emotionalTone = tone['document_tone']['tones'][0]['tone_id'] #get the emotional tone
-    finalTone = getEmoji(emotionalTone)
+    finalTone = getFaceEmoji() + getFaceEmoji()
 
-    # Sometimes lanugage tone is unable to be measured
+    # Sometimes tone is unable to be measured
     try:
-        languageTone = tone['document_tone']['tones'][1]['tone_id'] #get the language tone
-        finalTone += getEmoji(languageTone)
-    except:
-        finalTone += getFaceEmoji()
+        emotionalTone = tone['sentences_tone'][0]['tones'][0]['tone_id'] 
+        languageTone = tone['sentences_tone'][0]['tones'][1]['tone_id'] #get the language tone
+        finalTone = getEmoji(emotionalTone) + getEmoji(languageTone)
+    except IndexError:
+        pass
+    try:
+        emotionalTone = tone['sentences_tone'][0]['tones'][0]['tone_id'] 
+        languageTone = tone['sentences_tone'][1]['tones'][0]['tone_id'] #get the language tone
+        finalTone = getEmoji(emotionalTone) + getEmoji(languageTone)
+    except IndexError:
+        pass
+    try:
+        emotionalTone = tone['sentences_tone'][0]['tones'][0]['tone_id'] 
+        languageTone = tone['sentences_tone'][2]['tones'][0]['tone_id'] #get the language tone
+        finalTone = getEmoji(emotionalTone) + getEmoji(languageTone)
+    except IndexError:
+        pass
+    try:
+        emotionalTone = tone['sentences_tone'][1]['tones'][0]['tone_id'] 
+        languageTone = tone['sentences_tone'][1]['tones'][1]['tone_id'] #get the language tone
+        finalTone = getEmoji(emotionalTone) + getEmoji(languageTone)
+    except IndexError:
+        pass
+    try:
+        emotionalTone = tone['sentences_tone'][1]['tones'][0]['tone_id'] 
+        languageTone = tone['sentences_tone'][2]['tones'][0]['tone_id'] #get the language tone
+        finalTone = getEmoji(emotionalTone) + getEmoji(languageTone)
+    except IndexError:
+        pass
+    try:
+        emotionalTone = tone['sentences_tone'][2]['tones'][0]['tone_id'] 
+        languageTone = tone['sentences_tone'][2]['tones'][1]['tone_id'] #get the language tone
+        finalTone = getEmoji(emotionalTone) + getEmoji(languageTone)
+    except IndexError:
+        pass
+
+
 
     return finalTone + compatibility + getRandomEmoji()
+
+
+
+#debugging code
+#data = getScope(setParams('taurus')) #get the horoscope
+#tone = getTone(data['description']) #get the tone of the horoscope
+#print(tone['sentences_tone'])
+#print(tone['sentences_tone'][1]['tones'][0]['tone_id'])
+#print(analyzeScope('taurus'))
