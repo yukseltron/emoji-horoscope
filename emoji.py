@@ -3,9 +3,19 @@ import json
 import requests
 import random
 from watson_developer_cloud import ToneAnalyzerV3
-from requests_toolbelt.adapters import appengine
-appengine.monkeypatch()
+import sys
+import importlib
+try:
+    from google.appengine.api import urlfetch
+    from requests_toolbelt.adapters import appengine
+    appengine.monkeypatch()
+except ImportError:
+    pass
 
+if sys.version[0] == '2':
+    reload(sys)
+    sys.setdefaultencoding("utf-8")
+    
 #make astrology param to send to api
 def setParams(sign):
     params = (

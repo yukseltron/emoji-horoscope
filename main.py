@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request
 import emoji
-from requests_toolbelt.adapters import appengine
-appengine.monkeypatch()
+import sys
+import importlib
+try:
+    from google.appengine.api import urlfetch
+    from requests_toolbelt.adapters import appengine
+    appengine.monkeypatch()
+except ImportError:
+    pass
 
+if sys.version[0] == '2':
+    reload(sys)
+    sys.setdefaultencoding("utf-8")
+    
 app = Flask(__name__)
 
 @app.route('/')
