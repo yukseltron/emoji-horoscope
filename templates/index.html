@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title>Emoji Horoscope</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
     <div class="container">
       <div class="intro">
-        <h1>Emoji 🔮 Horoscope</h1>
+	<h1><a href="/" style="text-decoration:none;color:inherit">Emoji 🔮 Horoscope</a></h1>
         <div class="horoscope">
          {% block content %}
          {% endblock %}
@@ -77,6 +78,9 @@
       <p>The first two emojis are how you should act today.</p>
       <p>The third emoji is the sign you'll get along with.</p>
       <p>The fourth is something only you can interpret.</p>
+      <div class="links">
+    	  <a href="https://github.com/yukseltron/emoji-horoscope">@Github</a>
+      </div>
     </div>
 </body>
 </html>

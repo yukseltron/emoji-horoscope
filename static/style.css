@@ -7,6 +7,7 @@ body .container {
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin-bottom: 100px;
 }
 body .container .intro {
   display: flex;
@@ -40,6 +41,9 @@ body .container .content form .signs div div {
 body .container .content form .submit-btn {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+body .container .content .links {
+  margin-top: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
