@@ -6,8 +6,8 @@ Find your daily horoscope with emojis!
 Note: I do not believe in astrology. This was just for fun!
 
 How it works
-Uses: 
 
+Uses: 
 • [IBM Watson tone analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
 
 • [Aztro astrology API](https://aztro.readthedocs.io/en/latest/)
