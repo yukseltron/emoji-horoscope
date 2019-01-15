@@ -7,7 +7,9 @@ Note: I do not believe in astrology. This was just for fun!
 
 How it works
 Uses: 
+
 • [IBM Watson tone analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
+
 • [Aztro astrology API](https://aztro.readthedocs.io/en/latest/)
 
 The first and second emoji is "how" you'll behave today 
