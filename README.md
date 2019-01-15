@@ -21,5 +21,7 @@ The last emoji is up to your interpretation
 
 ## @TODO
 • ~~Make responsive~~
+
 • Optimize for computers lacking emojis
+
 • ~~Update favicon~~
